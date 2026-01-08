@@ -1,0 +1,237 @@
+!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kyrkokalender – Tranås kommun</title>
+
+<style>
+:root {
+  --primary: #2f5d50;
+  --light: #f4f7f6;
+  --card: #ffffff;
+  --border: #ddd;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--light);
+  color: #222;
+}
+
+header {
+  background: var(--primary);
+  color: white;
+  padding: 20px;
+}
+
+header h1 {
+  margin: 0;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 20px;
+}
+
+aside {
+  background: var(--card);
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid var(--border);
+}
+
+aside h3 {
+  margin-top: 0;
+}
+
+.filter label {
+  display: block;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+#events {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.event {
+  background: var(--card);
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.event strong {
+  color: var(--primary);
+  font-size: 18px;
+}
+
+@media (max-width: 800px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Kyrkokalender – Tranås kommun</h1>
+  <p>Aktuella gudstjänster och evenemang</p>
+</header>
+
+<div class="container">
+
+  <aside>
+    <h3>Filtrera kyrkor</h3>
+    <div class="filter">
+      <label><input type="checkbox" data-church="Tranås kyrka" checked> Tranås kyrka</label>
+      <label><input type="checkbox" data-church="Säby kyrka" checked> Säby kyrka</label>
+      <label><input type="checkbox" data-church="Adelövs kyrka" checked> Adelövs kyrka</label>
+      <label><input type="checkbox" data-church="Linderås kyrka" checked> Linderås kyrka</label>
+      <label><input type="checkbox" data-church="Holavedskapellet" checked> Holavedskapellet</label>
+      <label><input type="checkbox" data-church="Brunnsparkskyrkan" checked> Brunnsparkskyrkan</label>
+      <label><input type="checkbox" data-church="Frälsningsarmén Tranås" checked> Frälsningsarmén Tranås</label>
+      <label><input type="checkbox" data-church="Löfstadkyrkan" checked> Löfstadkyrkan</label>
+    </div>
+
+    <hr>
+
+    <h3>Filtrera dag</h3>
+    <select id="dayFilter">
+      <option value="all">Alla dagar</option>
+      <option value="onsdag">Onsdag</option>
+      <option value="torsdag">Torsdag</option>
+      <option value="fredag">Fredag</option>
+      <option value="lördag">Lördag</option>
+      <option value="söndag">Söndag</option>
+    </select>
+
+    <h3>Filtrera vecka</h3>
+    <select id="weekFilter">
+      <option value="all">Alla veckor</option>
+      <option value="11">Vecka 11</option>
+      <option value="12">Vecka 12</option>
+      <option value="13">Vecka 13</option>
+    </select>
+  </aside>
+
+  <section id="events">
+
+    <div class="event" data-church="Tranås kyrka" data-day="onsdag" data-week="11">
+      <strong>Tranås kyrka</strong><br>
+      Gudstjänst<br>
+      Onsdag 12 mars kl 18.00<br>
+      <em>Vecka 11</em>
+    </div>
+
+    <div class="event" data-church="Säby kyrka" data-day="torsdag" data-week="11">
+      <strong>Säby kyrka</strong><br>
+      Morgonbön<br>
+      Torsdag 13 mars kl 10.00<br>
+      <em>Vecka 11</em>
+    </div>
+
+    <div class="event" data-church="Adelövs kyrka" data-day="fredag" data-week="11">
+      <strong>Adelövs kyrka</strong><br>
+      Kaffeträff<br>
+      Fredag 14 mars kl 15.00<br>
+      <em>Vecka 11</em>
+    </div>
+
+    <div class="event" data-church="Linderås kyrka" data-day="lördag" data-week="11">
+      <strong>Linderås kyrka</strong><br>
+      Kvällsmässa<br>
+      Lördag 15 mars kl 18.30<br>
+      <em>Vecka 11</em>
+    </div>
+
+    <div class="event" data-church="Holavedskapellet" data-day="söndag" data-week="11">
+      <strong>Holavedskapellet</strong><br>
+      Gudstjänst<br>
+      Söndag 16 mars kl 11.00<br>
+      <em>Vecka 11</em>
+    </div>
+
+    <div class="event" data-church="Brunnsparkskyrkan" data-day="fredag" data-week="12">
+      <strong>Brunnsparkskyrkan</strong><br>
+      Musikkväll<br>
+      Fredag 17 mars kl 19.00<br>
+      <em>Vecka 12</em>
+    </div>
+
+    <div class="event" data-church="Frälsningsarmén Tranås" data-day="torsdag" data-week="12">
+      <strong>Frälsningsarmén Tranås</strong><br>
+      Sopplunch<br>
+      Torsdag 18 mars kl 12.00<br>
+      <em>Vecka 12</em>
+    </div>
+
+    <div class="event" data-church="Löfstadkyrkan" data-day="söndag" data-week="12">
+      <strong>Löfstadkyrkan</strong><br>
+      Ungdomsgudstjänst<br>
+      Söndag 19 mars kl 18.00<br>
+      <em>Vecka 12</em>
+    </div>
+
+  </section>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  function filterEvents() {
+    let activeChurches = [];
+    let selectedDay = document.getElementById("dayFilter").value;
+    let selectedWeek = document.getElementById("weekFilter").value;
+
+    document.querySelectorAll('input[type="checkbox"]').forEach(box => {
+      if (box.checked) activeChurches.push(box.dataset.church);
+    });
+
+    document.querySelectorAll('.event').forEach(event => {
+      let matchChurch = activeChurches.includes(event.dataset.church);
+      let matchDay = selectedDay === "all" || event.dataset.day === selectedDay;
+      let matchWeek = selectedWeek === "all" || event.dataset.week === selectedWeek;
+
+      event.style.display =
+        (matchChurch && matchDay && matchWeek) ? "block" : "none";
+    });
+  }
+
+  document.querySelectorAll('input[type="checkbox"]').forEach(box => {
+    box.addEventListener("change", filterEvents);
+  });
+
+  document.getElementById("dayFilter").addEventListener("change", filterEvents);
+  document.getElementById("weekFilter").addEventListener("change", filterEvents);
+
+});
+</script>
+
+</body>
+</html>
+
+
